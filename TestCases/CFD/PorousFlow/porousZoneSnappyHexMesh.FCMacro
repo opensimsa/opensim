@@ -82,7 +82,7 @@ bc['PorousBaffleMethod'] = 0
 FreeCAD.ActiveDocument.CfdFluidBoundary.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary.Label = 'inlet'
 FreeCAD.ActiveDocument.CfdFluidBoundary.References.append(('Box', 'Face5'))
-FreeCAD.getDocument('porousZone').recompute()
+FreeCAD.ActiveDocument.recompute()
 FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [CfdFluidBoundary.makeCfdFluidBoundary()]
 
 # Values are converted to SI units and stored (eg. m/s)
@@ -113,7 +113,7 @@ bc['PorousBaffleMethod'] = 0
 FreeCAD.ActiveDocument.CfdFluidBoundary001.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary001.Label = 'outlet'
 FreeCAD.ActiveDocument.CfdFluidBoundary001.References.append(('Box', 'Face6'))
-FreeCAD.getDocument('porousZone').recompute()
+FreeCAD.ActiveDocument.recompute()
 FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [CfdFluidBoundary.makeCfdFluidBoundary()]
 
 # Values are converted to SI units and stored (eg. m/s)
@@ -147,14 +147,14 @@ FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('Box', 'Face4'))
 FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('Box', 'Face1'))
 FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('Box', 'Face3'))
 FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('Box', 'Face2'))
-FreeCAD.getDocument('porousZone').recompute()
-#Gui.getDocument("porousZone").getObject("CfdFluidBoundary002").Visibility=False
+FreeCAD.ActiveDocument.recompute()
+#Gui.ActiveDocument.getObject("CfdFluidBoundary002").Visibility=False
 CfdMeshCart.makeCfdMeshCart('Box_CartesianMesh')
 App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.Box
 FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [App.ActiveDocument.ActiveObject]
 CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Box_CartesianMesh)
-#Gui.getDocument("porousZone").getObject("Box").Visibility=False
-#Gui.getDocument("porousZone").getObject("Box001").Visibility=True
+#Gui.ActiveDocument.getObject("Box").Visibility=False
+#Gui.ActiveDocument.getObject("Box001").Visibility=True
 referenceList = []
 part = FreeCAD.ActiveDocument.getObject('Box001')
 referenceList.append((part,'Face3'))
