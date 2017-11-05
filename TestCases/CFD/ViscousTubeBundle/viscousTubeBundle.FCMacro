@@ -20,10 +20,10 @@ import CfdFluidBoundary
 #Gui.activateWorkbench("CfdFoamWorkbench")
 analysis = CfdAnalysis.makeCfdAnalysis('CfdAnalysis')
 FemGui.setActiveAnalysis(analysis)
-analysis.Member = analysis.Member + [CfdPhysicsSelection.makeCfdPhysicsSelection()]
-analysis.Member = analysis.Member + [CfdFluidMaterial.makeCfdFluidMaterial('FluidProperties')]
-analysis.Member = analysis.Member + [CfdInitialiseFlowField.makeCfdInitialFlowField()]
-analysis.Member = analysis.Member + [CfdSolverFoam.makeCfdSolverFoam()]
+analysis.addObject(CfdPhysicsSelection.makeCfdPhysicsSelection())
+analysis.addObject(CfdFluidMaterial.makeCfdFluidMaterial('FluidProperties'))
+analysis.addObject(CfdInitialiseFlowField.makeCfdInitialFlowField())
+analysis.addObject(CfdSolverFoam.makeCfdSolverFoam())
 
 phys = FreeCAD.ActiveDocument.PhysicsModel.PhysicsModel
 phys['Time'] = 'Steady'
@@ -57,7 +57,7 @@ FreeCAD.ActiveDocument.getObject("OpenFOAM").EndTime = 500.00000
 
 CfdMeshCart.makeCfdMeshCart('Cut_CartesianMesh')
 App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.Cut
-FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [App.ActiveDocument.ActiveObject]
+FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
 FreeCAD.ActiveDocument.Cut_CartesianMesh.CharacteristicLengthMax = '10 mm'
 FreeCAD.ActiveDocument.Cut_CartesianMesh.MeshUtility = 'cfMesh'
 
@@ -121,7 +121,7 @@ FreeCAD.ActiveDocument.MeshRegion001.References = referenceList
 
 FreeCAD.ActiveDocument.recompute()
 
-FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [CfdFluidBoundary.makeCfdFluidBoundary()]
+FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 # Values are converted to SI units and stored (eg. m/s)
 bc = FreeCAD.ActiveDocument.CfdFluidBoundary.BoundarySettings
 bc['BoundaryType'] = 'inlet'
@@ -153,7 +153,7 @@ FreeCAD.ActiveDocument.CfdFluidBoundary.References.append(('Cut', 'Face1'))
 
 FreeCAD.ActiveDocument.recompute()
 
-FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [CfdFluidBoundary.makeCfdFluidBoundary()]
+FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 # Values are converted to SI units and stored (eg. m/s)
 bc = FreeCAD.ActiveDocument.CfdFluidBoundary001.BoundarySettings
 bc['BoundaryType'] = 'outlet'
@@ -185,7 +185,7 @@ FreeCAD.ActiveDocument.CfdFluidBoundary001.References.append(('Cut', 'Face17'))
 
 FreeCAD.ActiveDocument.recompute()
 
-FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [CfdFluidBoundary.makeCfdFluidBoundary()]
+FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 # Values are converted to SI units and stored (eg. m/s)
 bc = FreeCAD.ActiveDocument.CfdFluidBoundary002.BoundarySettings
 bc['BoundaryType'] = 'wall'

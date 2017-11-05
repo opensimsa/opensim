@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Macro Begin: /home/abogaers/Documents/FreeCADCFDWorkbench/TestCases/macros/porousZone.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+# Macro Begin: porousZoneSnappyHexMesh
+
 import FreeCAD
 import _CommandCfdAnalysis
 import CfdAnalysis
@@ -22,10 +23,10 @@ import _CommandCfdPorousZone
 
 analysis = CfdAnalysis.makeCfdAnalysis('CfdAnalysis')
 FemGui.setActiveAnalysis(analysis)
-analysis.Member = analysis.Member + [CfdPhysicsSelection.makeCfdPhysicsSelection()]
-analysis.Member = analysis.Member + [CfdFluidMaterial.makeCfdFluidMaterial('FluidProperties')]
-analysis.Member = analysis.Member + [CfdInitialiseFlowField.makeCfdInitialFlowField()]
-analysis.Member = analysis.Member + [CfdSolverFoam.makeCfdSolverFoam()]
+analysis.addObject(CfdPhysicsSelection.makeCfdPhysicsSelection())
+analysis.addObject(CfdFluidMaterial.makeCfdFluidMaterial('FluidProperties'))
+analysis.addObject(CfdInitialiseFlowField.makeCfdInitialFlowField())
+analysis.addObject(CfdSolverFoam.makeCfdSolverFoam())
 
 phys = FreeCAD.ActiveDocument.PhysicsModel.PhysicsModel
 phys['Time'] = 'Steady'
@@ -52,7 +53,7 @@ init['omega'] = 1.00007366139
 init['k'] = 0.01
 FreeCAD.ActiveDocument.InitialiseFields.InitialVariables = init
 #Gui.getDocument("porousZone").getObject("Box").Visibility=True
-FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [CfdFluidBoundary.makeCfdFluidBoundary()]
+FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
 # Values are converted to SI units and stored (eg. m/s)
 bc = FreeCAD.ActiveDocument.CfdFluidBoundary.BoundarySettings
@@ -83,7 +84,7 @@ FreeCAD.ActiveDocument.CfdFluidBoundary.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary.Label = 'inlet'
 FreeCAD.ActiveDocument.CfdFluidBoundary.References.append(('Box', 'Face5'))
 FreeCAD.ActiveDocument.recompute()
-FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [CfdFluidBoundary.makeCfdFluidBoundary()]
+FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
 # Values are converted to SI units and stored (eg. m/s)
 bc = FreeCAD.ActiveDocument.CfdFluidBoundary001.BoundarySettings
@@ -114,7 +115,7 @@ FreeCAD.ActiveDocument.CfdFluidBoundary001.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary001.Label = 'outlet'
 FreeCAD.ActiveDocument.CfdFluidBoundary001.References.append(('Box', 'Face6'))
 FreeCAD.ActiveDocument.recompute()
-FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [CfdFluidBoundary.makeCfdFluidBoundary()]
+FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
 # Values are converted to SI units and stored (eg. m/s)
 bc = FreeCAD.ActiveDocument.CfdFluidBoundary002.BoundarySettings
@@ -151,7 +152,7 @@ FreeCAD.ActiveDocument.recompute()
 #Gui.ActiveDocument.getObject("CfdFluidBoundary002").Visibility=False
 CfdMeshCart.makeCfdMeshCart('Box_CartesianMesh')
 App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.Box
-FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [App.ActiveDocument.ActiveObject]
+FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
 CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Box_CartesianMesh)
 #Gui.ActiveDocument.getObject("Box").Visibility=False
 #Gui.ActiveDocument.getObject("Box001").Visibility=True
@@ -179,7 +180,7 @@ FreeCAD.ActiveDocument.MeshRegion.RefinementLevel = 1
 FreeCAD.ActiveDocument.MeshRegion.RegionEdgeRefinement = 1
 FreeCAD.ActiveDocument.MeshRegion.Baffle = False
 
-FemGui.getActiveAnalysis().Member = FemGui.getActiveAnalysis().Member + [CfdZone.makeCfdPorousZone()]
+FemGui.getActiveAnalysis().addObject(CfdZone.makeCfdPorousZone())
 App.activeDocument().recompute()
 p = FreeCAD.ActiveDocument.PorousZone.porousZoneProperties
 p['PorousCorrelation'] = 'DarcyForchheimer'
@@ -203,4 +204,5 @@ FreeCAD.ActiveDocument.Box_CartesianMesh.MeshUtility = 'snappyHexMesh'
 FreeCAD.ActiveDocument.Box_CartesianMesh.CellsBetweenLevels = 3
 FreeCAD.ActiveDocument.Box_CartesianMesh.EdgeRefinement = 0
 FreeCAD.ActiveDocument.Box_CartesianMesh.PointInMesh = {'y': 203.1205, 'x': 258.1111, 'z': 2926.5721}
-# Macro End: /home/abogaers/Documents/FreeCADCFDWorkbench/TestCases/macros/porousZone.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Macro End: porousZoneSnappyHexMesh
