@@ -157,18 +157,12 @@ CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Box_CartesianMesh)
 #Gui.ActiveDocument.getObject("Box").Visibility=False
 #Gui.ActiveDocument.getObject("Box001").Visibility=True
 referenceList = []
-part = FreeCAD.ActiveDocument.getObject('Box001')
-referenceList.append((part,'Face3'))
-part = FreeCAD.ActiveDocument.getObject('Box001')
-referenceList.append((part,'Face2'))
-part = FreeCAD.ActiveDocument.getObject('Box001')
-referenceList.append((part,'Face4'))
-part = FreeCAD.ActiveDocument.getObject('Box001')
-referenceList.append((part,'Face1'))
-part = FreeCAD.ActiveDocument.getObject('Box001')
-referenceList.append((part,'Face5'))
-part = FreeCAD.ActiveDocument.getObject('Box001')
-referenceList.append((part,'Face6'))
+referenceList.append(('Box001','Face3'))
+referenceList.append(('Box001','Face2'))
+referenceList.append(('Box001','Face4'))
+referenceList.append(('Box001','Face1'))
+referenceList.append(('Box001','Face5'))
+referenceList.append(('Box001','Face6'))
 FreeCAD.ActiveDocument.MeshRegion.References = referenceList
 
 FreeCAD.ActiveDocument.MeshRegion.RelativeLength = 0.75

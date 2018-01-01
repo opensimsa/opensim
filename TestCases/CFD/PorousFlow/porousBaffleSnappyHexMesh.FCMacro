@@ -55,8 +55,7 @@ CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Box_CartesianMesh)
 #Gui.getDocument("porousBaffle").getObject("Box").Visibility=False
 #Gui.getDocument("porousBaffle").getObject("Face").Visibility=True
 referenceList = []
-part = FreeCAD.ActiveDocument.getObject('Face')
-referenceList.append((part,'Face1'))
+referenceList.append(('Face','Face1'))
 FreeCAD.ActiveDocument.MeshRegion.References = referenceList
 
 FreeCAD.ActiveDocument.MeshRegion.RelativeLength = 0.75
