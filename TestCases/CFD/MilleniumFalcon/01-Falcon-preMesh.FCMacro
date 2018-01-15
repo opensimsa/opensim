@@ -1,0 +1,93 @@
+# -*- coding: utf-8 -*-
+
+# Macro Begin: /ntfs/projects/eskomFreeCAD/examples/training/Falcon.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+import FreeCAD
+import Part
+import _CommandCfdAnalysis
+import FemGui
+import CfdAnalysis
+import CfdPhysicsSelection
+import CfdFluidMaterial
+import CfdInitialiseFlowField
+import CfdSolverFoam
+import _CommandCfdMeshCartFromShape
+import CfdMeshCart
+import os
+
+Part.insert(os.path.join(os.path.dirname(__file__), "MillenniumFalcon_ANH_MasterModel_v1.1_150403_jm.STEP"),"Unnamed")
+App.activeDocument().addObject("Part::MultiFuse","Fusion")
+App.activeDocument().Fusion.Shapes = [App.activeDocument().MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm,App.activeDocument().MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001,]
+#Gui.activeDocument().MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm.Visibility=False
+#Gui.activeDocument().MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001.Visibility=False
+#Gui.ActiveDocument.Fusion.ShapeColor=Gui.ActiveDocument.MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm.ShapeColor
+#Gui.ActiveDocument.Fusion.DisplayMode=Gui.ActiveDocument.MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm.DisplayMode
+App.ActiveDocument.recompute()
+App.ActiveDocument.addObject("Part::Box","Box")
+App.ActiveDocument.ActiveObject.Label = "Cube"
+App.ActiveDocument.recompute()
+#Gui.SendMsgToActiveView("ViewFit")
+#Gui.getDocument("Unnamed").getObject("Fusion").Visibility=False
+FreeCAD.getDocument("Unnamed").getObject("Box").Length = '1 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Length = '10 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Length = '100 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Length = '1000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '1 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '10 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '100 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '1000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Height = '1 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Height = '10 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Height = '100 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Height = '1000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '10000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '100000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '1e+06 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '1000 mm'
+#Gui.getDocument("Unnamed").getObject("Box").Visibility=False
+#Gui.getDocument("Unnamed").getObject("Fusion").Visibility=True
+#Gui.getDocument("Unnamed").getObject("Box").Visibility=True
+FreeCAD.getDocument("Unnamed").getObject("Box").Length = '2000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '2000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Height = '2000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Length = '1000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Length = '10000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '1000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Width = '10000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Height = '1000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Height = '10000 mm'
+FreeCAD.getDocument("Unnamed").getObject("Box").Placement = App.Placement(App.Vector(5000,0,0),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Unnamed").getObject("Box").Placement = App.Placement(App.Vector(5000,5000,0),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Unnamed").getObject("Box").Placement = App.Placement(App.Vector(5000,5000,5000),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Unnamed").getObject("Box").Placement = App.Placement(App.Vector(-5000,5000,5000),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Unnamed").getObject("Box").Placement = App.Placement(App.Vector(-5000,-5000,5000),App.Rotation(App.Vector(0,0,1),0))
+FreeCAD.getDocument("Unnamed").getObject("Box").Placement = App.Placement(App.Vector(-5000,-5000,-5000),App.Rotation(App.Vector(0,0,1),0))
+#Gui.getDocument("Unnamed").getObject("Box").Visibility=False
+#Gui.getDocument("Unnamed").getObject("Box").Visibility=True
+FreeCADGui.getDocument("Unnamed").getObject("Box").Transparency = 5
+FreeCADGui.getDocument("Unnamed").getObject("Box").Transparency = 50
+App.activeDocument().addObject("Part::Cut","Cut")
+App.activeDocument().Cut.Base = App.activeDocument().Box
+App.activeDocument().Cut.Tool = App.activeDocument().Fusion
+#Gui.activeDocument().Box.Visibility=False
+#Gui.activeDocument().Fusion.Visibility=False
+#Gui.ActiveDocument.Cut.ShapeColor=Gui.ActiveDocument.Box.ShapeColor
+#Gui.ActiveDocument.Cut.DisplayMode=Gui.ActiveDocument.Box.DisplayMode
+App.ActiveDocument.recompute()
+#Gui.ActiveDocument.setEdit('Cut',0)
+#Gui.activateWorkbench("CfdOFWorkbench")
+analysis = CfdAnalysis.makeCfdAnalysis('CfdAnalysis')
+FemGui.setActiveAnalysis(analysis)
+analysis.addObject(CfdPhysicsSelection.makeCfdPhysicsSelection())
+analysis.addObject(CfdFluidMaterial.makeCfdFluidMaterial('FluidProperties'))
+analysis.addObject(CfdInitialiseFlowField.makeCfdInitialFlowField())
+analysis.addObject(CfdSolverFoam.makeCfdSolverFoam())
+CfdMeshCart.makeCfdMeshCart('Cut_CartesianMesh')
+App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.Cut
+FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
+
+FreeCAD.ActiveDocument.Cut_CartesianMesh.CharacteristicLengthMax = '0.5 m'
+FreeCAD.ActiveDocument.Cut_CartesianMesh.MeshUtility = 'cfMesh'
+FreeCAD.ActiveDocument.Cut_CartesianMesh.CellsBetweenLevels = 3
+FreeCAD.ActiveDocument.Cut_CartesianMesh.EdgeRefinement = 0
+FreeCAD.ActiveDocument.Cut_CartesianMesh.PointInMesh = {'y': 0.0, 'x': 0.0, 'z': 0.0}
+# Macro End: /ntfs/projects/eskomFreeCAD/examples/training/Falcon.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
