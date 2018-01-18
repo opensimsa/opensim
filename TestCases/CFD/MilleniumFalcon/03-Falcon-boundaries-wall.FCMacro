@@ -39,5 +39,5 @@ fb.Label = 'wall'
 part = FreeCAD.ActiveDocument.getObject('Fusion')
 for i, f in enumerate(part.Shape.Faces):
    fb.References.append((part.Name, 'Face{}'.format(i+1)))
-FreeCAD.getDocument('Unnamed').recompute()
+FreeCAD.ActiveDocument.recompute()
 # Macro End: /ntfs/projects/FreeCAD/macros/Falcon-boundaries-wall.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++s

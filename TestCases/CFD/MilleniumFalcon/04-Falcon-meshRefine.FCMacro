@@ -5,20 +5,20 @@ import FreeCAD
 import CfdMeshRegion
 import _CommandCfdMeshRegion
 
-#Gui.getDocument("Unnamed").getObject("Fusion").Visibility=True
-#Gui.getDocument("Unnamed").getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm").Visibility=True
-#Gui.getDocument("Unnamed").getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001").Visibility=True
-#Gui.getDocument("Unnamed").getObject("Fusion").Visibility=False
-#Gui.getDocument("Unnamed").getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001").Visibility=False
-#Gui.getDocument("Unnamed").getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm").Visibility=False
-#Gui.getDocument("Unnamed").getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001").Visibility=True
-#Gui.getDocument("Unnamed").getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm").Visibility=True
-#Gui.getDocument("Unnamed").getObject("Fusion").Visibility=True
-#Gui.getDocument("Unnamed").getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm").Visibility=False
-#Gui.getDocument("Unnamed").getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001").Visibility=False
+#Gui.ActiveDocument.getObject("Fusion").Visibility=True
+#Gui.ActiveDocument.getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm").Visibility=True
+#Gui.ActiveDocument.getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001").Visibility=True
+#Gui.ActiveDocument.getObject("Fusion").Visibility=False
+#Gui.ActiveDocument.getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001").Visibility=False
+#Gui.ActiveDocument.getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm").Visibility=False
+#Gui.ActiveDocument.getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001").Visibility=True
+#Gui.ActiveDocument.getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm").Visibility=True
+#Gui.ActiveDocument.getObject("Fusion").Visibility=True
+#Gui.ActiveDocument.getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm").Visibility=False
+#Gui.ActiveDocument.getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001").Visibility=False
 CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Cut_CartesianMesh)
-#Gui.getDocument("Unnamed").getObject("Cut").Visibility=False
-FreeCADGui.getDocument("Unnamed").getObject("Fusion").Transparency = 0
+#Gui.ActiveDocument.getObject("Cut").Visibility=False
+FreeCADGui.ActiveDocument.getObject("Fusion").Transparency = 0
 referenceList = []
 part = FreeCAD.ActiveDocument.getObject('Fusion')
 for i, f in enumerate(part.Shape.Faces):
@@ -27,8 +27,8 @@ FreeCAD.ActiveDocument.MeshRegion.References = referenceList
 
 FreeCAD.ActiveDocument.MeshRegion.RelativeLength = 0.1
 FreeCAD.ActiveDocument.MeshRegion.RefinementThickness = '0.1 m'
-FreeCAD.ActiveDocument.MeshRegion.NumberLayers = 0
-FreeCAD.ActiveDocument.MeshRegion.ExpansionRatio = 0.0
+FreeCAD.ActiveDocument.MeshRegion.NumberLayers = 3
+FreeCAD.ActiveDocument.MeshRegion.ExpansionRatio = 1.2
 FreeCAD.ActiveDocument.MeshRegion.FirstLayerHeight = '0 mm'
 FreeCAD.ActiveDocument.MeshRegion.RefinementLevel = 1
 FreeCAD.ActiveDocument.MeshRegion.RegionEdgeRefinement = 1
