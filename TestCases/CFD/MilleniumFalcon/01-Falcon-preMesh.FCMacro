@@ -36,11 +36,14 @@ App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-5000,-
 #Gui.ActiveDocument.getObject("Box").Visibility=False
 #Gui.ActiveDocument.getObject("Box").Visibility=True
 FreeCADGui.ActiveDocument.getObject("Box").Transparency = 50
-App.activeDocument().addObject("Part::Cut","Cut")
-App.activeDocument().Cut.Base = App.activeDocument().Box
-App.activeDocument().Cut.Tool = App.activeDocument().Fusion
-#Gui.activeDocument().Box.Visibility=False
-#Gui.activeDocument().Fusion.Visibility=False
+Gui.activateWorkbench("PartWorkbench")
+import BOPTools.SplitFeatures
+j = BOPTools.SplitFeatures.makeXOR(name= 'XOR')
+j.Objects = [App.ActiveDocument.Box, App.ActiveDocument.Fusion]
+j.Proxy.execute(j)
+j.purgeTouched()
+for obj in j.ViewObject.Proxy.claimChildren():
+    obj.ViewObject.hide()
 #Gui.ActiveDocument.Cut.ShapeColor=Gui.ActiveDocument.Box.ShapeColor
 #Gui.ActiveDocument.Cut.DisplayMode=Gui.ActiveDocument.Box.DisplayMode
 App.ActiveDocument.recompute()
@@ -60,7 +63,7 @@ analysis.addObject(CfdFluidMaterial.makeCfdFluidMaterial('FluidProperties'))
 analysis.addObject(CfdInitialiseFlowField.makeCfdInitialFlowField())
 analysis.addObject(CfdSolverFoam.makeCfdSolverFoam())
 CfdMeshCart.makeCfdMeshCart('Cut_CartesianMesh')
-App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.Cut
+App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.XOR
 FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
 
 FreeCAD.ActiveDocument.Cut_CartesianMesh.CharacteristicLengthMax = '0.5 m'
