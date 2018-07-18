@@ -10,7 +10,7 @@ import CfdFluidMaterial
 import CfdInitialiseFlowField
 import CfdSolverFoam
 import _CommandCfdMeshGmshFromShape
-import CfdMeshGmsh
+import CfdMesh
 import _CommandCfdFluidBoundary
 import CfdFluidBoundary
 
@@ -46,12 +46,13 @@ init['UseInletTurbulenceValues'] = False
 init['omega'] = 1.0
 init['k'] = 0.01
 FreeCAD.ActiveDocument.InitialiseFields.InitialVariables = init
-CfdMeshGmsh.makeCfdMeshGmsh('Pad_GmshMesh')
+CfdMesh.makeCfdMesh('Pad_GmshMesh')
 App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.Pad
 FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
 
 FreeCAD.ActiveDocument.Pad_GmshMesh.CharacteristicLengthMax = '1000 mm'
-FreeCAD.ActiveDocument.Pad_GmshMesh.CharacteristicLengthMin = '0 mm'
+FreeCAD.ActiveDocument.Pad_GmshMesh.MeshUtility = 'gmsh'
+FreeCAD.ActiveDocument.Pad_GmshMesh.ElementDimension = '2D'
 
 FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 # Values are converted to SI units and stored (eg. m/s)
@@ -183,4 +184,68 @@ FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('Pad', 'Face8'))
 FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('Pad', 'Face9'))
 FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('Pad', 'Face11'))
 FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('Pad', 'Face12'))
+FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
+
+# Values are converted to SI units and stored (eg. m/s)
+bc = FreeCAD.ActiveDocument.CfdFluidBoundary004.BoundarySettings
+bc['BoundaryType'] = 'constraint'
+bc['BoundarySubtype'] = 'twoDBoundingPlane'
+bc['ThermalBoundaryType'] = 'fixedValue'
+bc['VelocityIsCartesian'] = True
+bc['Ux'] = 0.0
+bc['Uy'] = 0.0
+bc['Uz'] = 0.0
+bc['VelocityMag'] = 0.0
+bc['DirectionFace'] = ''
+bc['ReverseNormal'] = False
+bc['MassFlowRate'] = 0.0
+bc['VolFlowRate'] = 0.0
+bc['Pressure'] = 0.0
+bc['SlipRatio'] = 0.0
+bc['TurbulenceInletSpecification'] = 'intensityAndLengthScale'
+bc['TurbulentKineticEnergy'] = 0.01
+bc['SpecificDissipationRate'] = 1.00007366139
+bc['TurbulenceIntensity'] = 0.1
+bc['TurbulenceLengthScale'] = 0.1
+bc['PressureDropCoeff'] = 0.0
+bc['ScreenWireDiameter'] = 0.0001
+bc['ScreenSpacing'] = 0.0
+bc['PorousBaffleMethod'] = 0
+FreeCAD.ActiveDocument.CfdFluidBoundary004.BoundarySettings = bc
+FreeCAD.ActiveDocument.CfdFluidBoundary004.Label = 'front'
+FreeCAD.ActiveDocument.CfdFluidBoundary004.References = []
+FreeCAD.ActiveDocument.CfdFluidBoundary004.References.append(('Pad', 'Face14'))
+FreeCAD.ActiveDocument.recompute()
+FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
+
+# Values are converted to SI units and stored (eg. m/s)
+bc = FreeCAD.ActiveDocument.CfdFluidBoundary005.BoundarySettings
+bc['BoundaryType'] = 'constraint'
+bc['BoundarySubtype'] = 'twoDBoundingPlane'
+bc['ThermalBoundaryType'] = 'fixedValue'
+bc['VelocityIsCartesian'] = True
+bc['Ux'] = 0.0
+bc['Uy'] = 0.0
+bc['Uz'] = 0.0
+bc['VelocityMag'] = 0.0
+bc['DirectionFace'] = ''
+bc['ReverseNormal'] = False
+bc['MassFlowRate'] = 0.0
+bc['VolFlowRate'] = 0.0
+bc['Pressure'] = 0.0
+bc['SlipRatio'] = 0.0
+bc['TurbulenceInletSpecification'] = 'intensityAndLengthScale'
+bc['TurbulentKineticEnergy'] = 0.01
+bc['SpecificDissipationRate'] = 1.00007366139
+bc['TurbulenceIntensity'] = 0.1
+bc['TurbulenceLengthScale'] = 0.1
+bc['PressureDropCoeff'] = 0.0
+bc['ScreenWireDiameter'] = 0.0001
+bc['ScreenSpacing'] = 0.0
+bc['PorousBaffleMethod'] = 0
+FreeCAD.ActiveDocument.CfdFluidBoundary005.BoundarySettings = bc
+FreeCAD.ActiveDocument.CfdFluidBoundary005.Label = 'back'
+FreeCAD.ActiveDocument.CfdFluidBoundary005.References = []
+FreeCAD.ActiveDocument.CfdFluidBoundary005.References.append(('Pad', 'Face13'))
+FreeCAD.ActiveDocument.recompute()
 # Macro End: elbow

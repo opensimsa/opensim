@@ -10,8 +10,8 @@ import CfdPhysicsSelection
 import CfdFluidMaterial
 import CfdInitialiseFlowField
 import CfdSolverFoam
-import _CommandCfdMeshCartFromShape
-import CfdMeshCart
+import _CommandCfdMeshFromShape
+import CfdMesh
 import os
 
 doc = App.newDocument()
@@ -62,13 +62,13 @@ FreeCAD.ActiveDocument.PhysicsModel.PhysicsModel = phys
 analysis.addObject(CfdFluidMaterial.makeCfdFluidMaterial('FluidProperties'))
 analysis.addObject(CfdInitialiseFlowField.makeCfdInitialFlowField())
 analysis.addObject(CfdSolverFoam.makeCfdSolverFoam())
-CfdMeshCart.makeCfdMeshCart('Cut_CartesianMesh')
+CfdMesh.makeCfdMesh('Cut_Mesh')
 App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.XOR
 FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
 
-FreeCAD.ActiveDocument.Cut_CartesianMesh.CharacteristicLengthMax = '0.5 m'
-FreeCAD.ActiveDocument.Cut_CartesianMesh.MeshUtility = 'cfMesh'
-FreeCAD.ActiveDocument.Cut_CartesianMesh.CellsBetweenLevels = 3
-FreeCAD.ActiveDocument.Cut_CartesianMesh.EdgeRefinement = 0
-FreeCAD.ActiveDocument.Cut_CartesianMesh.PointInMesh = {'y': 0.0, 'x': 0.0, 'z': 0.0}
+FreeCAD.ActiveDocument.Cut_Mesh.CharacteristicLengthMax = '0.5 m'
+FreeCAD.ActiveDocument.Cut_Mesh.MeshUtility = 'cfMesh'
+FreeCAD.ActiveDocument.Cut_Mesh.CellsBetweenLevels = 3
+FreeCAD.ActiveDocument.Cut_Mesh.EdgeRefinement = 0
+FreeCAD.ActiveDocument.Cut_Mesh.PointInMesh = {'y': 0.0, 'x': 0.0, 'z': 0.0}
 # Macro End: /ntfs/projects/eskomFreeCAD/examples/training/Falcon.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++

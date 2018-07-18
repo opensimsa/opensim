@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Macro Begin: /ntfs/projects/FreeCAD/macros/02-mesh.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+# Macro Begin: macros/02-mesh.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
 import FreeCAD
 import _CommandCfdAnalysis
 import FemGui
@@ -9,8 +9,8 @@ import CfdPhysicsSelection
 import CfdFluidMaterial
 import CfdInitialiseFlowField
 import CfdSolverFoam
-import _CommandCfdMeshCartFromShape
-import CfdMeshCart
+import _CommandCfdMeshFromShape
+import CfdMesh
 import _CommandCfdMeshRegion
 import CfdMeshRegion
 
@@ -21,7 +21,7 @@ analysis.addObject(CfdPhysicsSelection.makeCfdPhysicsSelection())
 analysis.addObject(CfdFluidMaterial.makeCfdFluidMaterial('FluidProperties'))
 analysis.addObject(CfdInitialiseFlowField.makeCfdInitialFlowField())
 analysis.addObject(CfdSolverFoam.makeCfdSolverFoam())
-CfdMeshCart.makeCfdMeshCart('BooleanFragments_CartesianMesh')
+CfdMesh.makeCfdMesh('BooleanFragments_CartesianMesh')
 App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.BooleanFragments
 FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
 
@@ -144,4 +144,4 @@ FreeCAD.ActiveDocument.MeshRegion001.RegionEdgeRefinement = 1
 FreeCAD.ActiveDocument.MeshRegion001.Baffle = False
 
 FreeCAD.ActiveDocument.recompute()
-# Macro End: /ntfs/projects/FreeCAD/macros/02-mesh.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+# Macro End: macros/02-mesh.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++

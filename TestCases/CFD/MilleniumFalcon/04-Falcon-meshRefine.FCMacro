@@ -16,7 +16,7 @@ import _CommandCfdMeshRegion
 #Gui.ActiveDocument.getObject("Fusion").Visibility=True
 #Gui.ActiveDocument.getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm").Visibility=False
 #Gui.ActiveDocument.getObject("MillenniumFalcon_ANH_MasterModel_v1_1_150403_jm001").Visibility=False
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Cut_CartesianMesh)
+CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Cut_Mesh)
 #Gui.ActiveDocument.getObject("Cut").Visibility=False
 FreeCADGui.ActiveDocument.getObject("Fusion").Transparency = 0
 referenceList = []

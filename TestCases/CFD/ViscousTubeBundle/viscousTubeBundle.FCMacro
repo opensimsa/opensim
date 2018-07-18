@@ -11,7 +11,7 @@ import CfdFluidMaterial
 import CfdInitialiseFlowField
 import CfdSolverFoam
 import _CommandCfdMeshCartFromShape
-import CfdMeshCart
+import CfdMesh
 import _CommandCfdMeshRegion
 import CfdMeshRegion
 import _CommandCfdFluidBoundary
@@ -55,13 +55,13 @@ FreeCAD.ActiveDocument.getObject("OpenFOAM").ParallelCores = 4
 FreeCAD.ActiveDocument.getObject("OpenFOAM").WriteInterval = 50.00000
 FreeCAD.ActiveDocument.getObject("OpenFOAM").EndTime = 500.00000
 
-CfdMeshCart.makeCfdMeshCart('Cut_CartesianMesh')
+CfdMesh.makeCfdMesh('Cut_Mesh')
 App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.Cut
 FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
-FreeCAD.ActiveDocument.Cut_CartesianMesh.CharacteristicLengthMax = '10 mm'
-FreeCAD.ActiveDocument.Cut_CartesianMesh.MeshUtility = 'cfMesh'
+FreeCAD.ActiveDocument.Cut_Mesh.CharacteristicLengthMax = '10 mm'
+FreeCAD.ActiveDocument.Cut_Mesh.MeshUtility = 'cfMesh'
 
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Cut_CartesianMesh)
+CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Cut_Mesh)
 FreeCAD.ActiveDocument.MeshRegion.RelativeLength = 0.5
 FreeCAD.ActiveDocument.MeshRegion.RefinementThickness = '5 mm'
 FreeCAD.ActiveDocument.MeshRegion.NumberLayers = 16
@@ -80,7 +80,7 @@ referenceList.append(('Cut','Face21'))
 referenceList.append(('Cut','Face19'))
 FreeCAD.ActiveDocument.MeshRegion.References = referenceList
 
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Cut_CartesianMesh)
+CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Cut_Mesh)
 FreeCAD.ActiveDocument.MeshRegion001.RelativeLength = 0.75
 FreeCAD.ActiveDocument.MeshRegion001.RefinementThickness = '30 mm'
 FreeCAD.ActiveDocument.MeshRegion001.NumberLayers = 0

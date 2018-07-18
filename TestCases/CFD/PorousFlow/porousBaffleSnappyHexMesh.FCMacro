@@ -9,12 +9,12 @@ import CfdPhysicsSelection
 import CfdFluidMaterial
 import CfdInitialiseFlowField
 import CfdSolverFoam
-import _CommandCfdMeshCartFromShape
+import _CommandCfdMeshFromShape
 import _CommandCfdMeshRegion
 import _CommandCfdFluidBoundary
 import CfdFluidBoundary
 import FemGui
-import CfdMeshCart
+import CfdMesh
 import CfdMeshRegion
 
 analysis = CfdAnalysis.makeCfdAnalysis('CfdAnalysis')
@@ -48,10 +48,10 @@ init['UseInletTurbulenceValues'] = False
 init['omega'] = 1.00007366139
 init['k'] = 0.01
 FreeCAD.ActiveDocument.InitialiseFields.InitialVariables = init
-CfdMeshCart.makeCfdMeshCart('Box_CartesianMesh')
+CfdMesh.makeCfdMesh('Box_Mesh')
 App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.Box
 FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Box_CartesianMesh)
+CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Box_Mesh)
 #Gui.getDocument("porousBaffle").getObject("Box").Visibility=False
 #Gui.getDocument("porousBaffle").getObject("Face").Visibility=True
 referenceList = []
@@ -203,10 +203,10 @@ FreeCAD.ActiveDocument.CfdFluidBoundary003.Label = 'baffle'
 FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('Face', 'Face1'))
 FreeCAD.ActiveDocument.recompute()
 
-FreeCAD.ActiveDocument.Box_CartesianMesh.CharacteristicLengthMax = '50 mm'
-FreeCAD.ActiveDocument.Box_CartesianMesh.MeshUtility = 'snappyHexMesh'
-FreeCAD.ActiveDocument.Box_CartesianMesh.CellsBetweenLevels = 3
-FreeCAD.ActiveDocument.Box_CartesianMesh.EdgeRefinement = 0
-FreeCAD.ActiveDocument.Box_CartesianMesh.PointInMesh = {'y': 203.1205, 'x': 258.1111, 'z': 2926.5721}
+FreeCAD.ActiveDocument.Box_Mesh.CharacteristicLengthMax = '50 mm'
+FreeCAD.ActiveDocument.Box_Mesh.MeshUtility = 'snappyHexMesh'
+FreeCAD.ActiveDocument.Box_Mesh.CellsBetweenLevels = 3
+FreeCAD.ActiveDocument.Box_Mesh.EdgeRefinement = 0
+FreeCAD.ActiveDocument.Box_Mesh.PointInMesh = {'y': 203.1205, 'x': 258.1111, 'z': 2926.5721}
 
 # Macro End: porousBaffleSnappyHexMesh

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Macro Begin: C:\Users\ooxtoby\Documents\CHPC Workshop\UAV\macro\01-geom.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+# Macro Begin: macro\01-geom.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
 import FreeCAD
 import Part
 #import SplitFeatures
@@ -60,4 +60,4 @@ j.purgeTouched()
 for obj in j.ViewObject.Proxy.claimChildren():
     obj.ViewObject.hide()
 Gui.activeDocument().activeView().setCameraType("Perspective")
-# Macro End: C:\Users\ooxtoby\Documents\CHPC Workshop\UAV\macro\01-geom.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+# Macro End: macro\01-geom.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++

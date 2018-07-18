@@ -11,7 +11,7 @@ import CfdInitialiseFlowField
 import CfdSolverFoam
 import _CommandCfdFluidBoundary
 import _CommandCfdMeshCartFromShape
-import CfdMeshCart
+import CfdMesh
 import _CommandCfdMeshRegion
 import CfdMeshRegion
 import _CommandCfdPorousZone
@@ -150,10 +150,10 @@ FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('Box', 'Face3'))
 FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('Box', 'Face2'))
 FreeCAD.ActiveDocument.recompute()
 #Gui.ActiveDocument.getObject("CfdFluidBoundary002").Visibility=False
-CfdMeshCart.makeCfdMeshCart('Box_CartesianMesh')
+CfdMesh.makeCfdMesh('Box_Mesh')
 App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.Box
 FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Box_CartesianMesh)
+CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Box_Mesh)
 #Gui.ActiveDocument.getObject("Box").Visibility=False
 #Gui.ActiveDocument.getObject("Box001").Visibility=True
 referenceList = []
@@ -193,10 +193,10 @@ FreeCAD.ActiveDocument.PorousZone.porousZoneProperties = p
 FreeCAD.ActiveDocument.PorousZone.partNameList = ['Box001']
 
 
-FreeCAD.ActiveDocument.Box_CartesianMesh.CharacteristicLengthMax = '50 mm'
-FreeCAD.ActiveDocument.Box_CartesianMesh.MeshUtility = 'snappyHexMesh'
-FreeCAD.ActiveDocument.Box_CartesianMesh.CellsBetweenLevels = 3
-FreeCAD.ActiveDocument.Box_CartesianMesh.EdgeRefinement = 0
-FreeCAD.ActiveDocument.Box_CartesianMesh.PointInMesh = {'y': 203.1205, 'x': 258.1111, 'z': 2926.5721}
+FreeCAD.ActiveDocument.Box_Mesh.CharacteristicLengthMax = '50 mm'
+FreeCAD.ActiveDocument.Box_Mesh.MeshUtility = 'snappyHexMesh'
+FreeCAD.ActiveDocument.Box_Mesh.CellsBetweenLevels = 3
+FreeCAD.ActiveDocument.Box_Mesh.EdgeRefinement = 0
+FreeCAD.ActiveDocument.Box_Mesh.PointInMesh = {'y': 203.1205, 'x': 258.1111, 'z': 2926.5721}
 
 # Macro End: porousZoneSnappyHexMesh
