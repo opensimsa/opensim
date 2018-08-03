@@ -9,7 +9,6 @@ import CfdPhysicsSelection
 import CfdFluidMaterial
 import CfdInitialiseFlowField
 import CfdSolverFoam
-import _CommandCfdMeshGmshFromShape
 import CfdMesh
 import _CommandCfdFluidBoundary
 import CfdFluidBoundary
