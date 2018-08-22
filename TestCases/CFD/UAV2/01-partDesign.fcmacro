@@ -1,0 +1,55 @@
+import Part
+import os
+Part.open(os.path.join(os.path.dirname(__file__), "UAV.IGS"))
+Gui.SendMsgToActiveView("ViewFit")
+Gui.activateWorkbench("DraftWorkbench")
+import Draft
+Draft.downgrade(App.ActiveDocument.UAV,delete=True)
+FreeCAD.ActiveDocument.recompute()
+App.ActiveDocument.removeObject("Face001")
+App.ActiveDocument.removeObject("Face006")
+App.ActiveDocument.removeObject("Face005")
+App.ActiveDocument.removeObject("Face003")
+App.ActiveDocument.removeObject("Face004")
+App.ActiveDocument.removeObject("Face")
+App.ActiveDocument.removeObject("Face019")
+App.ActiveDocument.removeObject("Face022")
+App.ActiveDocument.removeObject("Face017")
+App.ActiveDocument.removeObject("Face021")
+App.ActiveDocument.removeObject("Face020")
+App.ActiveDocument.removeObject("Face016")
+App.ActiveDocument.removeObject("Face014")
+App.ActiveDocument.removeObject("Face011")
+App.ActiveDocument.removeObject("Face012")
+App.ActiveDocument.removeObject("Face008")
+App.ActiveDocument.removeObject("Face009")
+App.ActiveDocument.removeObject("Face013")
+App.ActiveDocument.removeObject("Face018")
+App.ActiveDocument.removeObject("Face023")
+App.ActiveDocument.removeObject("Face002")
+App.ActiveDocument.removeObject("Face007")
+App.ActiveDocument.removeObject("Face010")
+App.ActiveDocument.removeObject("Face015")
+App.ActiveDocument.recompute()
+
+Draft.upgrade(App.ActiveDocument.RootObjects,delete=True)
+FreeCAD.ActiveDocument.recompute()
+
+Gui.activateWorkbench("PartWorkbench")
+App.ActiveDocument.addObject("Part::Box","Box")
+App.ActiveDocument.ActiveObject.Label = "Cube"
+App.ActiveDocument.recompute()
+Gui.SendMsgToActiveView("ViewFit")
+FreeCAD.ActiveDocument.getObject("Box").Length = '2500 mm'
+FreeCAD.ActiveDocument.getObject("Box").Height = '6000 mm'
+FreeCAD.ActiveDocument.getObject("Box").Width = '4000 mm'
+FreeCAD.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(0,-2000,-3500),App.Rotation(App.Vector(0,0,1),0))
+
+import BOPTools.SplitFeatures
+j = BOPTools.SplitFeatures.makeXOR(name= 'XOR')
+j.Objects = [App.ActiveDocument.Box, App.ActiveDocument.Shell]
+j.Proxy.execute(j)
+j.purgeTouched()
+for obj in j.ViewObject.Proxy.claimChildren():
+    obj.ViewObject.hide()
+

@@ -21,13 +21,11 @@ analysis.addObject(CfdFluidMaterial.makeCfdFluidMaterial('FluidProperties'))
 analysis.addObject(CfdInitialiseFlowField.makeCfdInitialFlowField())
 analysis.addObject(CfdSolverFoam.makeCfdSolverFoam())
 
-phys = FreeCAD.ActiveDocument.PhysicsModel.PhysicsModel
-phys['Time'] = 'Steady'
-phys['Flow'] = 'Incompressible'
-phys['Turbulence'] = 'Laminar'
-phys['TurbulenceModel'] = 'None'
-phys['Thermal'] = None
-FreeCAD.ActiveDocument.PhysicsModel.PhysicsModel = phys
+phys = FreeCAD.ActiveDocument.PhysicsModel
+phys.Time = 'Steady'
+phys.Flow = 'Incompressible'
+phys.Turbulence = 'Laminar'
+phys.Thermal = 'None'
 
 mat = FreeCAD.ActiveDocument.FluidProperties.Material
 mat['Density'] = '1.2 kg/m^3'

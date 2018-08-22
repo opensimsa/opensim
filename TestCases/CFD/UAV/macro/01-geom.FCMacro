@@ -15,46 +15,14 @@ App.ActiveDocument.addObject("Part::Box","Box")
 App.ActiveDocument.ActiveObject.Label = "Cube"
 App.ActiveDocument.recompute()
 #Gui.SendMsgToActiveView("ViewFit")
-App.ActiveDocument.getObject("Box").Length = '1 mm'
-App.ActiveDocument.getObject("Box").Length = '15 mm'
-App.ActiveDocument.getObject("Box").Length = '150 mm'
-App.ActiveDocument.getObject("Box").Length = '1500 mm'
 App.ActiveDocument.getObject("Box").Length = '15000 mm'
-App.ActiveDocument.getObject("Box").Width = '1 mm'
-App.ActiveDocument.getObject("Box").Width = '10 mm'
-App.ActiveDocument.getObject("Box").Width = '100 mm'
-App.ActiveDocument.getObject("Box").Width = '1000 mm'
 App.ActiveDocument.getObject("Box").Width = '10000 mm'
-App.ActiveDocument.getObject("Box").Height = '1 mm'
-App.ActiveDocument.getObject("Box").Height = '10 mm'
-App.ActiveDocument.getObject("Box").Height = '100 mm'
-App.ActiveDocument.getObject("Box").Height = '1000 mm'
 App.ActiveDocument.getObject("Box").Height = '10000 mm'
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-76,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-75,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-750,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7500,0,0),App.Rotation(App.Vector(0,0,1),0))
-#Gui.activeDocument().activeView().viewBottom()
-Gui.activeDocument().getObject("Box").Transparency = 5
-Gui.activeDocument().getObject("Box").Transparency = 50
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-75,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-70,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-700,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7000,0,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7000,-1,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7000,-5,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7000,-50,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7000,-500,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7000,-5000,0),App.Rotation(App.Vector(0,0,1),0))
-App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7000,0,0),App.Rotation(App.Vector(0,0,1),0))
 App.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(-7000,-4000,0),App.Rotation(App.Vector(0,0,1),0))
-j = BOPTools.SplitFeatures.makeBooleanFragments(name= 'BooleanFragments')
+#Gui.activeDocument().activeView().viewBottom()
+Gui.activeDocument().getObject("Box").Transparency = 50
+j = BOPTools.SplitFeatures.makeXOR(name= 'XOR')
 j.Objects = [App.ActiveDocument.Box, App.ActiveDocument.uav]
-j.Mode = 'Standard'
 j.Proxy.execute(j)
 j.purgeTouched()
 for obj in j.ViewObject.Proxy.claimChildren():

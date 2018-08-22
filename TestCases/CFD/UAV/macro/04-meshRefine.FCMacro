@@ -111,6 +111,21 @@ FreeCAD.ActiveDocument.MeshRegion001.RefinementLevel = 1
 FreeCAD.ActiveDocument.MeshRegion001.RegionEdgeRefinement = 1
 FreeCAD.ActiveDocument.MeshRegion001.Baffle = False
 
+import CfdMeshRegion
+CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.XOR_CartesianMesh)
+referenceList = []
+FreeCAD.ActiveDocument.MeshRegion002.References = referenceList
+FreeCAD.ActiveDocument.MeshRegion002.RelativeLength = 0.5
+FreeCAD.ActiveDocument.MeshRegion002.RefinementThickness = '0 mm'
+FreeCAD.ActiveDocument.MeshRegion002.NumberLayers = 0
+FreeCAD.ActiveDocument.MeshRegion002.ExpansionRatio = 0.0
+FreeCAD.ActiveDocument.MeshRegion002.FirstLayerHeight = '0 mm'
+FreeCAD.ActiveDocument.MeshRegion002.RefinementLevel = 1
+FreeCAD.ActiveDocument.MeshRegion002.RegionEdgeRefinement = 1
+FreeCAD.ActiveDocument.MeshRegion002.Baffle = False
+FreeCAD.ActiveDocument.MeshRegion002.Internal = True
+FreeCAD.ActiveDocument.MeshRegion002.InternalRegion = {'BoxLengths': {'y': 2.0, 'x': 5.0, 'z': 6.0}, 'Type': 'Box', 'Center': {'y': 0.5, 'x': 1.0, 'z': 0}, 'SphereRadius': 0.001}
+
 FreeCAD.ActiveDocument.getObject("OpenFOAM").Parallel = True
 FreeCAD.ActiveDocument.getObject("OpenFOAM").ParallelCores = 4
 

@@ -6,14 +6,13 @@ import _CommandCfdFluidBoundary
 import FemGui
 import CfdFluidBoundary
 
-
-phys = FreeCAD.ActiveDocument.PhysicsModel.PhysicsModel
-phys['Time'] = 'Steady'
-phys['Flow'] = 'Incompressible'
-phys['Turbulence'] = 'RANS'
-phys['TurbulenceModel'] = 'kOmegaSST'
-phys['Thermal'] = None
-FreeCAD.ActiveDocument.PhysicsModel.PhysicsModel = phys
+obj = FreeCAD.ActiveDocument.PhysicsModel
+obj.Time = 'Steady'
+obj.Phase = 'Single'
+obj.Flow = 'Incompressible'
+obj.Thermal = 'None'
+obj.Turbulence = 'RANS'
+obj.TurbulenceModel = 'kOmegaSST'
 
 mat = FreeCAD.ActiveDocument.FluidProperties.Material
 mat['Density'] = '1.2e-09 kg/mm^3'
@@ -62,7 +61,7 @@ bc['PorousBaffleMethod'] = 0
 FreeCAD.ActiveDocument.CfdFluidBoundary.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary.Label = 'inlet'
 FreeCAD.ActiveDocument.CfdFluidBoundary.References = []
-FreeCAD.ActiveDocument.CfdFluidBoundary.References.append(('BooleanFragments', 'Face1'))
+FreeCAD.ActiveDocument.CfdFluidBoundary.References.append(('Box', 'Face1'))
 FreeCAD.ActiveDocument.recompute()
 FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
@@ -94,7 +93,7 @@ bc['PorousBaffleMethod'] = 0
 FreeCAD.ActiveDocument.CfdFluidBoundary001.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary001.Label = 'outlet'
 FreeCAD.ActiveDocument.CfdFluidBoundary001.References = []
-FreeCAD.ActiveDocument.CfdFluidBoundary001.References.append(('BooleanFragments', 'Face6'))
+FreeCAD.ActiveDocument.CfdFluidBoundary001.References.append(('Box', 'Face2'))
 FreeCAD.ActiveDocument.recompute()
 FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
@@ -126,9 +125,9 @@ bc['PorousBaffleMethod'] = 0
 FreeCAD.ActiveDocument.CfdFluidBoundary002.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary002.Label = 'wall'
 FreeCAD.ActiveDocument.CfdFluidBoundary002.References = []
-FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('BooleanFragments', 'Face3'))
-FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('BooleanFragments', 'Face4'))
-FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('BooleanFragments', 'Face2'))
+FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('Box', 'Face6'))
+FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('Box', 'Face4'))
+FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('Box', 'Face3'))
 FreeCAD.ActiveDocument.recompute()
 FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
@@ -160,7 +159,7 @@ bc['PorousBaffleMethod'] = 0
 FreeCAD.ActiveDocument.CfdFluidBoundary003.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary003.Label = 'constraint'
 FreeCAD.ActiveDocument.CfdFluidBoundary003.References = []
-FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('BooleanFragments', 'Face5'))
+FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('XOR', 'Face89'))
 FreeCAD.ActiveDocument.recompute()
 FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 

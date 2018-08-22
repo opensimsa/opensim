@@ -21,17 +21,17 @@ analysis.addObject(CfdPhysicsSelection.makeCfdPhysicsSelection())
 analysis.addObject(CfdFluidMaterial.makeCfdFluidMaterial('FluidProperties'))
 analysis.addObject(CfdInitialiseFlowField.makeCfdInitialFlowField())
 analysis.addObject(CfdSolverFoam.makeCfdSolverFoam())
-CfdMesh.makeCfdMesh('BooleanFragments_CartesianMesh')
-App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.BooleanFragments
+CfdMesh.makeCfdMesh('XOR_CartesianMesh')
+App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.XOR
 FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
 
-FreeCAD.ActiveDocument.BooleanFragments_CartesianMesh.CharacteristicLengthMax = '350 mm'
-FreeCAD.ActiveDocument.BooleanFragments_CartesianMesh.MeshUtility = 'cfMesh'
-FreeCAD.ActiveDocument.BooleanFragments_CartesianMesh.ElementDimension = '3D'
-FreeCAD.ActiveDocument.BooleanFragments_CartesianMesh.CellsBetweenLevels = 3
-FreeCAD.ActiveDocument.BooleanFragments_CartesianMesh.EdgeRefinement = 0
-FreeCAD.ActiveDocument.BooleanFragments_CartesianMesh.PointInMesh = {'y': 0.0, 'x': 0.0, 'z': 0.0}
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.BooleanFragments_CartesianMesh)
+FreeCAD.ActiveDocument.XOR_CartesianMesh.CharacteristicLengthMax = '350 mm'
+FreeCAD.ActiveDocument.XOR_CartesianMesh.MeshUtility = 'cfMesh'
+FreeCAD.ActiveDocument.XOR_CartesianMesh.ElementDimension = '3D'
+FreeCAD.ActiveDocument.XOR_CartesianMesh.CellsBetweenLevels = 3
+FreeCAD.ActiveDocument.XOR_CartesianMesh.EdgeRefinement = 0
+FreeCAD.ActiveDocument.XOR_CartesianMesh.PointInMesh = {'y': 0.0, 'x': 0.0, 'z': 0.0}
+CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.XOR_CartesianMesh)
 referenceList = []
 referenceList.append(('uav','Face1'))
 referenceList.append(('uav','Face2'))
@@ -106,7 +106,7 @@ FreeCAD.ActiveDocument.MeshRegion.RefinementLevel = 1
 FreeCAD.ActiveDocument.MeshRegion.RegionEdgeRefinement = 1
 FreeCAD.ActiveDocument.MeshRegion.Baffle = False
 
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.BooleanFragments_CartesianMesh)
+CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.XOR_CartesianMesh)
 #Gui.SendMsgToActiveView("ViewSelection")
 referenceList = []
 referenceList.append(('uav','Face1'))
