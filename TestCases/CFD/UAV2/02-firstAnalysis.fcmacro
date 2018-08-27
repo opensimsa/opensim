@@ -12,18 +12,18 @@ analysis.addObject(CfdInitialiseFlowField.makeCfdInitialFlowField())
 import CfdSolverFoam
 analysis.addObject(CfdSolverFoam.makeCfdSolverFoam())
 import CfdMesh
-CfdMesh.makeCfdMesh('XOR_Mesh')
-App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.XOR
+CfdMesh.makeCfdMesh('Slice_Mesh')
+App.ActiveDocument.ActiveObject.Part = App.ActiveDocument.Slice
 FemGui.getActiveAnalysis().addObject(App.ActiveDocument.ActiveObject)
 
-FreeCAD.ActiveDocument.XOR_Mesh.CharacteristicLengthMax = '100 mm'
-FreeCAD.ActiveDocument.XOR_Mesh.MeshUtility = 'cfMesh'
-FreeCAD.ActiveDocument.XOR_Mesh.ElementDimension = '3D'
-FreeCAD.ActiveDocument.XOR_Mesh.CellsBetweenLevels = 3
-FreeCAD.ActiveDocument.XOR_Mesh.EdgeRefinement = 0
-FreeCAD.ActiveDocument.XOR_Mesh.PointInMesh = {'y': 0.0, 'x': 0.0, 'z': 0.0}
+FreeCAD.ActiveDocument.Slice_Mesh.CharacteristicLengthMax = '100 mm'
+FreeCAD.ActiveDocument.Slice_Mesh.MeshUtility = 'cfMesh'
+FreeCAD.ActiveDocument.Slice_Mesh.ElementDimension = '3D'
+FreeCAD.ActiveDocument.Slice_Mesh.CellsBetweenLevels = 3
+FreeCAD.ActiveDocument.Slice_Mesh.EdgeRefinement = 0
+FreeCAD.ActiveDocument.Slice_Mesh.PointInMesh = {'y': 0.0, 'x': 0.0, 'z': 0.0}
 import CfdMeshRegion
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.XOR_Mesh)
+CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Slice_Mesh)
 referenceList = []
 referenceList.append(('Shell','Face1'))
 referenceList.append(('Shell','Face2'))
@@ -172,8 +172,8 @@ FreeCAD.ActiveDocument.MeshRegion.Baffle = False
 FreeCAD.ActiveDocument.MeshRegion.Internal = False
 FreeCAD.ActiveDocument.MeshRegion.InternalRegion = {'BoxLengths': {'y': 0.001, 'x': 0.001, 'z': 0.001}, 'Type': 'Box', 'Center': {'y': 0, 'x': 0.0, 'z': 0}, 'SphereRadius': 0.001}
 
-Gui.ActiveDocument.getObject("XOR_Mesh").Visibility=False
-Gui.ActiveDocument.getObject("XOR").Visibility=True
+Gui.ActiveDocument.getObject("Slice_Mesh").Visibility=False
+Gui.ActiveDocument.getObject("Slice").Visibility=True
 import CfdFluidBoundary
 FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
@@ -208,7 +208,7 @@ bc['PorousBaffleMethod'] = 0
 FreeCAD.ActiveDocument.CfdFluidBoundary.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary.Label = 'constraint'
 FreeCAD.ActiveDocument.CfdFluidBoundary.References = []
-FreeCAD.ActiveDocument.CfdFluidBoundary.References.append(('XOR', 'Face1'))
+FreeCAD.ActiveDocument.CfdFluidBoundary.References.append(('Slice', 'Face1'))
 FreeCAD.ActiveDocument.recompute()
 FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
@@ -243,8 +243,8 @@ bc['PorousBaffleMethod'] = 0
 FreeCAD.ActiveDocument.CfdFluidBoundary001.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary001.Label = 'inlet'
 FreeCAD.ActiveDocument.CfdFluidBoundary001.References = []
-FreeCAD.ActiveDocument.CfdFluidBoundary001.References.append(('XOR', 'Face3'))
-FreeCAD.ActiveDocument.CfdFluidBoundary001.References.append(('XOR', 'Face2'))
+FreeCAD.ActiveDocument.CfdFluidBoundary001.References.append(('Slice', 'Face3'))
+FreeCAD.ActiveDocument.CfdFluidBoundary001.References.append(('Slice', 'Face2'))
 FreeCAD.ActiveDocument.recompute()
 FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
@@ -279,7 +279,7 @@ bc['PorousBaffleMethod'] = 0
 FreeCAD.ActiveDocument.CfdFluidBoundary002.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary002.Label = 'slip'
 FreeCAD.ActiveDocument.CfdFluidBoundary002.References = []
-FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('XOR', 'Face12'))
+FreeCAD.ActiveDocument.CfdFluidBoundary002.References.append(('Slice', 'Face12'))
 FreeCAD.ActiveDocument.recompute()
 FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
@@ -314,10 +314,10 @@ bc['PorousBaffleMethod'] = 0
 FreeCAD.ActiveDocument.CfdFluidBoundary003.BoundarySettings = bc
 FreeCAD.ActiveDocument.CfdFluidBoundary003.Label = 'outlet'
 FreeCAD.ActiveDocument.CfdFluidBoundary003.References = []
-FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('XOR', 'Face4'))
-FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('XOR', 'Face5'))
+FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('Slice', 'Face4'))
+FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('Slice', 'Face5'))
 FreeCAD.ActiveDocument.recompute()
-Gui.ActiveDocument.getObject("XOR").Visibility=False
+Gui.ActiveDocument.getObject("Slice").Visibility=False
 Gui.ActiveDocument.getObject("CfdFluidBoundary").Visibility=False
 Gui.ActiveDocument.getObject("CfdFluidBoundary001").Visibility=False
 Gui.ActiveDocument.getObject("CfdFluidBoundary002").Visibility=False
@@ -326,7 +326,7 @@ Gui.ActiveDocument.getObject("CfdFluidBoundary003").Visibility=True
 Gui.ActiveDocument.getObject("CfdFluidBoundary002").Visibility=True
 Gui.ActiveDocument.getObject("CfdFluidBoundary001").Visibility=True
 Gui.ActiveDocument.getObject("CfdFluidBoundary").Visibility=True
-Gui.ActiveDocument.getObject("XOR").Visibility=True
+Gui.ActiveDocument.getObject("Slice").Visibility=True
 Gui.ActiveDocument.getObject("Shell").Visibility=False
 FemGui.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 

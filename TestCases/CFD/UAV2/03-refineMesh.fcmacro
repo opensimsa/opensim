@@ -1,5 +1,5 @@
 import CfdMeshRegion
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.XOR_Mesh)
+CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Slice_Mesh)
 referenceList = []
 FreeCAD.ActiveDocument.MeshRegion001.References = referenceList
 FreeCAD.ActiveDocument.MeshRegion001.RelativeLength = 0.25

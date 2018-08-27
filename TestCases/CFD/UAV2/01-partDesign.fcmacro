@@ -46,10 +46,13 @@ FreeCAD.ActiveDocument.getObject("Box").Width = '4000 mm'
 FreeCAD.ActiveDocument.getObject("Box").Placement = App.Placement(App.Vector(0,-2000,-3500),App.Rotation(App.Vector(0,0,1),0))
 
 import BOPTools.SplitFeatures
-j = BOPTools.SplitFeatures.makeXOR(name= 'XOR')
-j.Objects = [App.ActiveDocument.Box, App.ActiveDocument.Shell]
+j = BOPTools.SplitFeatures.makeSlice(name= 'Slice')
+j.Base = App.ActiveDocument.Box
+j.Tools = [App.ActiveDocument.Shell]
+j.Mode = 'Split'
 j.Proxy.execute(j)
 j.purgeTouched()
 for obj in j.ViewObject.Proxy.claimChildren():
     obj.ViewObject.hide()
+
 
