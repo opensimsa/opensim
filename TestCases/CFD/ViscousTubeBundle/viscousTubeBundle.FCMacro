@@ -10,7 +10,7 @@ import CfdPhysicsSelection
 import CfdFluidMaterial
 import CfdInitialiseFlowField
 import CfdSolverFoam
-import _CommandCfdMeshCartFromShape
+import _CommandCfdMeshFromShape
 import CfdMesh
 import _CommandCfdMeshRegion
 import CfdMeshRegion
