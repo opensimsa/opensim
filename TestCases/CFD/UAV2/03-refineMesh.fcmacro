@@ -2,162 +2,23 @@ import CfdMeshRegion
 CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Slice_Mesh)
 referenceList = []
 FreeCAD.ActiveDocument.MeshRegion001.References = referenceList
+
 FreeCAD.ActiveDocument.MeshRegion001.RelativeLength = 0.25
 FreeCAD.ActiveDocument.MeshRegion001.RefinementThickness = '0 mm'
-FreeCAD.ActiveDocument.MeshRegion001.NumberLayers = 0
-FreeCAD.ActiveDocument.MeshRegion001.ExpansionRatio = 0.0
+FreeCAD.ActiveDocument.MeshRegion001.NumberLayers = 1
+FreeCAD.ActiveDocument.MeshRegion001.ExpansionRatio = 1.2
 FreeCAD.ActiveDocument.MeshRegion001.FirstLayerHeight = '0 mm'
-FreeCAD.ActiveDocument.MeshRegion001.RefinementLevel = 1
-FreeCAD.ActiveDocument.MeshRegion001.RegionEdgeRefinement = 1
+FreeCAD.ActiveDocument.MeshRegion001.RegionEdgeRefinement = 1.0
 FreeCAD.ActiveDocument.MeshRegion001.Baffle = False
 FreeCAD.ActiveDocument.MeshRegion001.Internal = True
-FreeCAD.ActiveDocument.MeshRegion001.InternalRegion = {'BoxLengths': {'y': 0.001, 'x': 0.001, 'z': 0.001}, 'Type': u'Sphere', 'Center': {'y': 0.1, 'x': 0.0, 'z': -0.35}, 'SphereRadius': 0.8}
-
-referenceList = []
-referenceList.append(('Shell','Face1'))
-referenceList.append(('Shell','Face2'))
-referenceList.append(('Shell','Face3'))
-referenceList.append(('Shell','Face4'))
-referenceList.append(('Shell','Face5'))
-referenceList.append(('Shell','Face6'))
-referenceList.append(('Shell','Face7'))
-referenceList.append(('Shell','Face8'))
-referenceList.append(('Shell','Face9'))
-referenceList.append(('Shell','Face10'))
-referenceList.append(('Shell','Face11'))
-referenceList.append(('Shell','Face12'))
-referenceList.append(('Shell','Face13'))
-referenceList.append(('Shell','Face14'))
-referenceList.append(('Shell','Face15'))
-referenceList.append(('Shell','Face16'))
-referenceList.append(('Shell','Face17'))
-referenceList.append(('Shell','Face18'))
-referenceList.append(('Shell','Face19'))
-referenceList.append(('Shell','Face20'))
-referenceList.append(('Shell','Face21'))
-referenceList.append(('Shell','Face22'))
-referenceList.append(('Shell','Face23'))
-referenceList.append(('Shell','Face24'))
-referenceList.append(('Shell','Face25'))
-referenceList.append(('Shell','Face26'))
-referenceList.append(('Shell','Face27'))
-referenceList.append(('Shell','Face28'))
-referenceList.append(('Shell','Face29'))
-referenceList.append(('Shell','Face30'))
-referenceList.append(('Shell','Face31'))
-referenceList.append(('Shell','Face32'))
-referenceList.append(('Shell','Face33'))
-referenceList.append(('Shell','Face34'))
-referenceList.append(('Shell','Face35'))
-referenceList.append(('Shell','Face36'))
-referenceList.append(('Shell','Face37'))
-referenceList.append(('Shell','Face38'))
-referenceList.append(('Shell','Face39'))
-referenceList.append(('Shell','Face40'))
-referenceList.append(('Shell','Face41'))
-referenceList.append(('Shell','Face42'))
-referenceList.append(('Shell','Face43'))
-referenceList.append(('Shell','Face44'))
-referenceList.append(('Shell','Face45'))
-referenceList.append(('Shell','Face46'))
-referenceList.append(('Shell','Face47'))
-referenceList.append(('Shell','Face48'))
-referenceList.append(('Shell','Face49'))
-referenceList.append(('Shell','Face50'))
-referenceList.append(('Shell','Face51'))
-referenceList.append(('Shell','Face52'))
-referenceList.append(('Shell','Face53'))
-referenceList.append(('Shell','Face54'))
-referenceList.append(('Shell','Face55'))
-referenceList.append(('Shell','Face56'))
-referenceList.append(('Shell','Face57'))
-referenceList.append(('Shell','Face58'))
-referenceList.append(('Shell','Face59'))
-referenceList.append(('Shell','Face60'))
-referenceList.append(('Shell','Face61'))
-referenceList.append(('Shell','Face62'))
-referenceList.append(('Shell','Face63'))
-referenceList.append(('Shell','Face64'))
-referenceList.append(('Shell','Face65'))
-referenceList.append(('Shell','Face66'))
-referenceList.append(('Shell','Face67'))
-referenceList.append(('Shell','Face68'))
-referenceList.append(('Shell','Face69'))
-referenceList.append(('Shell','Face70'))
-referenceList.append(('Shell','Face71'))
-referenceList.append(('Shell','Face72'))
-referenceList.append(('Shell','Face73'))
-referenceList.append(('Shell','Face74'))
-referenceList.append(('Shell','Face75'))
-referenceList.append(('Shell','Face76'))
-referenceList.append(('Shell','Face77'))
-referenceList.append(('Shell','Face78'))
-referenceList.append(('Shell','Face79'))
-referenceList.append(('Shell','Face80'))
-referenceList.append(('Shell','Face81'))
-referenceList.append(('Shell','Face82'))
-referenceList.append(('Shell','Face83'))
-referenceList.append(('Shell','Face84'))
-referenceList.append(('Shell','Face85'))
-referenceList.append(('Shell','Face86'))
-referenceList.append(('Shell','Face87'))
-referenceList.append(('Shell','Face88'))
-referenceList.append(('Shell','Face89'))
-referenceList.append(('Shell','Face90'))
-referenceList.append(('Shell','Face91'))
-referenceList.append(('Shell','Face92'))
-referenceList.append(('Shell','Face93'))
-referenceList.append(('Shell','Face94'))
-referenceList.append(('Shell','Face95'))
-referenceList.append(('Shell','Face96'))
-referenceList.append(('Shell','Face97'))
-referenceList.append(('Shell','Face98'))
-referenceList.append(('Shell','Face99'))
-referenceList.append(('Shell','Face100'))
-referenceList.append(('Shell','Face101'))
-referenceList.append(('Shell','Face102'))
-referenceList.append(('Shell','Face103'))
-referenceList.append(('Shell','Face104'))
-referenceList.append(('Shell','Face105'))
-referenceList.append(('Shell','Face106'))
-referenceList.append(('Shell','Face107'))
-referenceList.append(('Shell','Face108'))
-referenceList.append(('Shell','Face109'))
-referenceList.append(('Shell','Face110'))
-referenceList.append(('Shell','Face111'))
-referenceList.append(('Shell','Face112'))
-referenceList.append(('Shell','Face113'))
-referenceList.append(('Shell','Face114'))
-referenceList.append(('Shell','Face115'))
-referenceList.append(('Shell','Face116'))
-referenceList.append(('Shell','Face117'))
-referenceList.append(('Shell','Face118'))
-referenceList.append(('Shell','Face119'))
-referenceList.append(('Shell','Face120'))
-referenceList.append(('Shell','Face121'))
-referenceList.append(('Shell','Face122'))
-referenceList.append(('Shell','Face123'))
-referenceList.append(('Shell','Face124'))
-referenceList.append(('Shell','Face125'))
-referenceList.append(('Shell','Face126'))
-referenceList.append(('Shell','Face127'))
-referenceList.append(('Shell','Face128'))
-referenceList.append(('Shell','Face129'))
-referenceList.append(('Shell','Face130'))
-referenceList.append(('Shell','Face131'))
-referenceList.append(('Shell','Face132'))
-referenceList.append(('Shell','Face133'))
-referenceList.append(('Shell','Face134'))
-FreeCAD.ActiveDocument.MeshRegion.References = referenceList
+FreeCAD.ActiveDocument.MeshRegion001.InternalRegion = {'Type': 'Sphere', 'Center': {'x': '0 mm', 'y': '100 mm', 'z': '-350 mm'}, 'BoxLengths': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'SphereRadius': '800 mm', 'Point1': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Point2': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Radius1': '0 mm', 'Radius2': '0 mm'}
 
 FreeCAD.ActiveDocument.MeshRegion.RelativeLength = 0.1
 FreeCAD.ActiveDocument.MeshRegion.RefinementThickness = '100 mm'
 FreeCAD.ActiveDocument.MeshRegion.NumberLayers = 4
 FreeCAD.ActiveDocument.MeshRegion.ExpansionRatio = 1.2
 FreeCAD.ActiveDocument.MeshRegion.FirstLayerHeight = '0 mm'
-FreeCAD.ActiveDocument.MeshRegion.RefinementLevel = 1
 FreeCAD.ActiveDocument.MeshRegion.RegionEdgeRefinement = 1
 FreeCAD.ActiveDocument.MeshRegion.Baffle = False
 FreeCAD.ActiveDocument.MeshRegion.Internal = False
-FreeCAD.ActiveDocument.MeshRegion.InternalRegion = {'BoxLengths': {'y': 0.001, 'x': 0.001, 'z': 0.001}, 'Type': 'Box', 'Center': {'y': 0, 'x': 0.0, 'z': 0}, 'SphereRadius': 0.001}
-
+FreeCAD.ActiveDocument.MeshRegion.InternalRegion = {'Type': 'Box', 'Center': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'BoxLengths': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'SphereRadius': '0 mm', 'Point1': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Point2': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Radius1': '0 mm', 'Radius2': '0 mm'}
