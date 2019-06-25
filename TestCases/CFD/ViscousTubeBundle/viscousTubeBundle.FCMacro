@@ -28,8 +28,8 @@ FreeCAD.ActiveDocument.Cut_Mesh.CellsBetweenLevels = 3
 FreeCAD.ActiveDocument.Cut_Mesh.EdgeRefinement = 1.0
 FreeCAD.ActiveDocument.Cut_Mesh.PointInMesh = {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}
 
-import CfdMeshRegion
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Cut_Mesh)
+import CfdMeshRefinement
+CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Cut_Mesh)
 referenceList = []
 referenceList.append(('Cut','Face7'))
 referenceList.append(('Cut','Face9'))
@@ -41,17 +41,18 @@ referenceList.append(('Cut','Face25'))
 referenceList.append(('Cut','Face23'))
 referenceList.append(('Cut','Face21'))
 referenceList.append(('Cut','Face19'))
-FreeCAD.ActiveDocument.MeshRegion.References = referenceList
+FreeCAD.ActiveDocument.MeshRefinement.References = referenceList
 
-FreeCAD.ActiveDocument.MeshRegion.RelativeLength = 0.5
-FreeCAD.ActiveDocument.MeshRegion.RefinementThickness = '5 mm'
-FreeCAD.ActiveDocument.MeshRegion.NumberLayers = 16
-FreeCAD.ActiveDocument.MeshRegion.ExpansionRatio = 1.2
-FreeCAD.ActiveDocument.MeshRegion.FirstLayerHeight = '0 mm'
-FreeCAD.ActiveDocument.MeshRegion.RegionEdgeRefinement = 1.0
-FreeCAD.ActiveDocument.MeshRegion.Baffle = False
-FreeCAD.ActiveDocument.MeshRegion.Internal = False
-FreeCAD.ActiveDocument.MeshRegion.InternalRegion = {'Type': 'Box', 'Center': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'BoxLengths': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'SphereRadius': '0 mm', 'Point1': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Point2': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Radius1': '0 mm', 'Radius2': '0 mm'}
+FreeCAD.ActiveDocument.MeshRefinement.RelativeLength = 0.5
+FreeCAD.ActiveDocument.MeshRefinement.RefinementThickness = '5 mm'
+FreeCAD.ActiveDocument.MeshRefinement.NumberLayers = 16
+FreeCAD.ActiveDocument.MeshRefinement.ExpansionRatio = 1.2
+FreeCAD.ActiveDocument.MeshRefinement.FirstLayerHeight = '0 mm'
+FreeCAD.ActiveDocument.MeshRefinement.RegionEdgeRefinement = 1.0
+FreeCAD.ActiveDocument.MeshRefinement.Baffle = False
+FreeCAD.ActiveDocument.MeshRefinement.Internal = False
+
+FreeCAD.ActiveDocument.Group = [FreeCAD.ActiveDocument.MeshRefinement]
 
 obj = FreeCAD.ActiveDocument.PhysicsModel
 obj.Time = 'Steady'
