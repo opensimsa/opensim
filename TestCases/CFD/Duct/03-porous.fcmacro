@@ -9,6 +9,7 @@ App.ActiveDocument.getObject("Cylinder").Radius = '45 mm'
 Gui.activateWorkbench("CfdOFWorkbench")
 
 import CfdZone
+import CfdTools
 CfdTools.getActiveAnalysis().addObject(CfdZone.makeCfdPorousZone())
 p = FreeCAD.ActiveDocument.PorousZone
 p.PorousCorrelation = 'DarcyForchheimer'

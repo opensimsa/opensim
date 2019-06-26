@@ -1,5 +1,6 @@
 import CfdAnalysis
 analysis = CfdAnalysis.makeCfdAnalysis('CfdAnalysis')
+import CfdTools
 CfdTools.setActiveAnalysis(analysis)
 import CfdPhysicsSelection
 analysis.addObject(CfdPhysicsSelection.makeCfdPhysicsSelection())

@@ -52,8 +52,6 @@ FreeCAD.ActiveDocument.MeshRefinement.RegionEdgeRefinement = 1.0
 FreeCAD.ActiveDocument.MeshRefinement.Baffle = False
 FreeCAD.ActiveDocument.MeshRefinement.Internal = False
 
-FreeCAD.ActiveDocument.Group = [FreeCAD.ActiveDocument.MeshRefinement]
-
 obj = FreeCAD.ActiveDocument.PhysicsModel
 obj.Time = 'Steady'
 obj.Flow = 'Incompressible'

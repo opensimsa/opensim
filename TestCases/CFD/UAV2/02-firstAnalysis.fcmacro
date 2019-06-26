@@ -25,8 +25,8 @@ FreeCAD.ActiveDocument.Slice_Mesh.CellsBetweenLevels = 3
 FreeCAD.ActiveDocument.Slice_Mesh.EdgeRefinement = 1.0
 FreeCAD.ActiveDocument.Slice_Mesh.PointInMesh = {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}
 
-import CfdMeshRegion
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Slice_Mesh)
+import CfdMeshRefinement
+CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Slice_Mesh)
 referenceList = []
 referenceList.append(('Shell','Face1'))
 referenceList.append(('Shell','Face2'))
@@ -162,17 +162,16 @@ referenceList.append(('Shell','Face131'))
 referenceList.append(('Shell','Face132'))
 referenceList.append(('Shell','Face133'))
 referenceList.append(('Shell','Face134'))
-FreeCAD.ActiveDocument.MeshRegion.References = referenceList
+FreeCAD.ActiveDocument.MeshRefinement.References = referenceList
 
-FreeCAD.ActiveDocument.MeshRegion.RelativeLength = 0.25
-FreeCAD.ActiveDocument.MeshRegion.RefinementThickness = '100 mm'
-FreeCAD.ActiveDocument.MeshRegion.NumberLayers = 1
-FreeCAD.ActiveDocument.MeshRegion.ExpansionRatio = 1.2
-FreeCAD.ActiveDocument.MeshRegion.FirstLayerHeight = '0 mm'
-FreeCAD.ActiveDocument.MeshRegion.RegionEdgeRefinement = 1.0
-FreeCAD.ActiveDocument.MeshRegion.Baffle = False
-FreeCAD.ActiveDocument.MeshRegion.Internal = False
-FreeCAD.ActiveDocument.MeshRegion.InternalRegion = {'Type': 'Box', 'Center': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'BoxLengths': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'SphereRadius': '0 mm', 'Point1': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Point2': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Radius1': '0 mm', 'Radius2': '0 mm'}
+FreeCAD.ActiveDocument.MeshRefinement.RelativeLength = 0.25
+FreeCAD.ActiveDocument.MeshRefinement.RefinementThickness = '100 mm'
+FreeCAD.ActiveDocument.MeshRefinement.NumberLayers = 1
+FreeCAD.ActiveDocument.MeshRefinement.ExpansionRatio = 1.2
+FreeCAD.ActiveDocument.MeshRefinement.FirstLayerHeight = '0 mm'
+FreeCAD.ActiveDocument.MeshRefinement.RegionEdgeRefinement = 1.0
+FreeCAD.ActiveDocument.MeshRefinement.Baffle = False
+FreeCAD.ActiveDocument.MeshRefinement.Internal = False
 
 Gui.ActiveDocument.getObject("Slice_Mesh").Visibility=False
 Gui.ActiveDocument.getObject("Slice").Visibility=True

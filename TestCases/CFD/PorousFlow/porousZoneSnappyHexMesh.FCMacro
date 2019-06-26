@@ -55,8 +55,8 @@ init.omega = '57.3 deg/s'
 init.k = '0 mm^2/s^2'
 init.Inlet = None
 
-import CfdMeshRegion
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Box_Mesh)
+import CfdMeshRefinement
+CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Box_Mesh)
 referenceList = []
 referenceList.append(('Box001','Face1'))
 referenceList.append(('Box001','Face2'))
@@ -64,17 +64,16 @@ referenceList.append(('Box001','Face3'))
 referenceList.append(('Box001','Face4'))
 referenceList.append(('Box001','Face5'))
 referenceList.append(('Box001','Face6'))
-FreeCAD.ActiveDocument.MeshRegion.References = referenceList
+FreeCAD.ActiveDocument.MeshRefinement.References = referenceList
 
-FreeCAD.ActiveDocument.MeshRegion.RelativeLength = 0.75
-FreeCAD.ActiveDocument.MeshRegion.RefinementThickness = '0 mm'
-FreeCAD.ActiveDocument.MeshRegion.NumberLayers = 1
-FreeCAD.ActiveDocument.MeshRegion.ExpansionRatio = 1.2
-FreeCAD.ActiveDocument.MeshRegion.FirstLayerHeight = '0 mm'
-FreeCAD.ActiveDocument.MeshRegion.RegionEdgeRefinement = 1.0
-FreeCAD.ActiveDocument.MeshRegion.Baffle = False
-FreeCAD.ActiveDocument.MeshRegion.Internal = False
-FreeCAD.ActiveDocument.MeshRegion.InternalRegion = {'Type': 'Box', 'Center': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'BoxLengths': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'SphereRadius': '0 mm', 'Point1': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Point2': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Radius1': '0 mm', 'Radius2': '0 mm'}
+FreeCAD.ActiveDocument.MeshRefinement.RelativeLength = 0.75
+FreeCAD.ActiveDocument.MeshRefinement.RefinementThickness = '0 mm'
+FreeCAD.ActiveDocument.MeshRefinement.NumberLayers = 1
+FreeCAD.ActiveDocument.MeshRefinement.ExpansionRatio = 1.2
+FreeCAD.ActiveDocument.MeshRefinement.FirstLayerHeight = '0 mm'
+FreeCAD.ActiveDocument.MeshRefinement.RegionEdgeRefinement = 1.0
+FreeCAD.ActiveDocument.MeshRefinement.Baffle = False
+FreeCAD.ActiveDocument.MeshRefinement.Internal = False
 
 import CfdFluidBoundary
 CfdTools.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())

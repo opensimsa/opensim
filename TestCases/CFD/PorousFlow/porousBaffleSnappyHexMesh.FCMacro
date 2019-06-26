@@ -37,21 +37,20 @@ FreeCAD.ActiveDocument.Box_Mesh.CellsBetweenLevels = 3
 FreeCAD.ActiveDocument.Box_Mesh.EdgeRefinement = 1.0
 FreeCAD.ActiveDocument.Box_Mesh.PointInMesh = {'x': '245.5 mm', 'y': '260.4 mm', 'z': '939.2 mm'}
 
-import CfdMeshRegion
-CfdMeshRegion.makeCfdMeshRegion(App.ActiveDocument.Box_Mesh)
+import CfdMeshRefinement
+CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Box_Mesh)
 referenceList = []
 referenceList.append(('Face','Face1'))
-FreeCAD.ActiveDocument.MeshRegion.References = referenceList
+FreeCAD.ActiveDocument.MeshRefinement.References = referenceList
 
-FreeCAD.ActiveDocument.MeshRegion.RelativeLength = 0.75
-FreeCAD.ActiveDocument.MeshRegion.RefinementThickness = '0 mm'
-FreeCAD.ActiveDocument.MeshRegion.NumberLayers = 1
-FreeCAD.ActiveDocument.MeshRegion.ExpansionRatio = 1.2
-FreeCAD.ActiveDocument.MeshRegion.FirstLayerHeight = '0 mm'
-FreeCAD.ActiveDocument.MeshRegion.RegionEdgeRefinement = 1.0
-FreeCAD.ActiveDocument.MeshRegion.Baffle = True
-FreeCAD.ActiveDocument.MeshRegion.Internal = False
-FreeCAD.ActiveDocument.MeshRegion.InternalRegion = {'Type': 'Box', 'Center': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'BoxLengths': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'SphereRadius': '0 mm', 'Point1': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Point2': {'x': '0 mm', 'y': '0 mm', 'z': '0 mm'}, 'Radius1': '0 mm', 'Radius2': '0 mm'}
+FreeCAD.ActiveDocument.MeshRefinement.RelativeLength = 0.75
+FreeCAD.ActiveDocument.MeshRefinement.RefinementThickness = '0 mm'
+FreeCAD.ActiveDocument.MeshRefinement.NumberLayers = 1
+FreeCAD.ActiveDocument.MeshRefinement.ExpansionRatio = 1.2
+FreeCAD.ActiveDocument.MeshRefinement.FirstLayerHeight = '0 mm'
+FreeCAD.ActiveDocument.MeshRefinement.RegionEdgeRefinement = 1.0
+FreeCAD.ActiveDocument.MeshRefinement.Baffle = True
+FreeCAD.ActiveDocument.MeshRefinement.Internal = False
 
 FreeCAD.ActiveDocument.FluidProperties.Material = {'Name': 'Air', 'Description': 'Standard air properties at 20 Degrees Celsius and 1 atm', 'Density': '1.20 kg/m^3', 'DynamicViscosity': '1.80e-5 kg/m/s', 'MolarMass': '0.0289643897748887 kg/mol', 'Cp': '1004.703 J/kg/K', 'SutherlandConstant': '1.4579326545176254e-06 kg/m/s/K^0.5', 'SutherlandTemperature': '110.4 K'}
 
