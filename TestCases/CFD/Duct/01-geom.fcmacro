@@ -16,3 +16,7 @@ App.ActiveDocument.getObject("Box001").Height = '100 mm'
 App.ActiveDocument.getObject("Box001").Length = '600 mm'
 App.activeDocument().addObject("Part::MultiFuse","Fusion")
 App.activeDocument().Fusion.Shapes = [App.activeDocument().Box,App.activeDocument().Box001,]
+
+FreeCAD.ActiveDocument.recompute()
+Gui.SendMsgToActiveView("ViewFit")
+Gui.activeDocument().activeView().viewFront()

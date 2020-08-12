@@ -54,21 +54,6 @@ FreeCAD.ActiveDocument.MeshRefinement.Internal = False
 
 FreeCAD.ActiveDocument.FluidProperties.Material = {'Name': 'Air', 'Description': 'Standard air properties at 20 Degrees Celsius and 1 atm', 'Density': '1.20 kg/m^3', 'DynamicViscosity': '1.80e-5 kg/m/s', 'MolarMass': '0.0289643897748887 kg/mol', 'Cp': '1004.703 J/kg/K', 'SutherlandConstant': '1.4579326545176254e-06 kg/m/s/K^0.5', 'SutherlandTemperature': '110.4 K'}
 
-init = FreeCAD.ActiveDocument.InitialiseFields
-init.PotentialFoam = True
-init.UseInletUPValues = False
-init.Ux = '0 mm/s'
-init.Uy = '0 mm/s'
-init.Uz = '0 mm/s'
-init.Pressure = '0 kg/(mm*s^2)'
-init.VolumeFractions = {}
-init.UseInletTemperatureValues = False
-init.Temperature = '293 K'
-init.UseInletTurbulenceValues = False
-init.omega = '57.3 deg/s'
-init.k = '0 mm^2/s^2'
-init.Inlet = None
-
 import CfdFluidBoundary
 CfdTools.getActiveAnalysis().addObject(CfdFluidBoundary.makeCfdFluidBoundary())
 
@@ -204,3 +189,16 @@ FreeCAD.ActiveDocument.CfdFluidBoundary003.Label = 'baffle'
 FreeCAD.ActiveDocument.CfdFluidBoundary003.References = []
 FreeCAD.ActiveDocument.CfdFluidBoundary003.References.append(('Face', 'Face1'))
 FreeCAD.ActiveDocument.recompute()
+
+init = FreeCAD.ActiveDocument.InitialiseFields
+init.PotentialFlow = True
+init.Ux = '0 mm/s'
+init.Uy = '0 mm/s'
+init.Uz = '0 mm/s'
+init.UseOutletPValue = True
+init.BoundaryP = FreeCAD.ActiveDocument.CfdFluidBoundary001
+init.Pressure = '0 kg/(mm*s^2)'
+init.VolumeFractions = {}
+init.Temperature = '293 K'
+init.omega = '57.3 deg/s'
+init.k = '0 mm^2/s^2'

@@ -47,3 +47,5 @@ FreeCAD.ActiveDocument.MeshRefinement002.FirstLayerHeight = '0 mm'
 FreeCAD.ActiveDocument.MeshRefinement002.RegionEdgeRefinement = 1.0
 FreeCAD.ActiveDocument.MeshRefinement002.Baffle = False
 FreeCAD.ActiveDocument.MeshRefinement002.Internal = False
+
+FreeCADGui.ActiveDocument.Sphere.Transparency = 50
