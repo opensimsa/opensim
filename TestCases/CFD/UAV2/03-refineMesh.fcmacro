@@ -8,7 +8,7 @@ App.ActiveDocument.recompute()
 Gui.activateWorkbench("CfdOFWorkbench")
 
 import CfdMeshRefinement
-CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Slice_Mesh)
+CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Compound_Mesh)
 referenceList = []
 referenceList.append(('Sphere','Solid1'))
 FreeCAD.ActiveDocument.MeshRefinement001.References = referenceList
@@ -19,7 +19,6 @@ FreeCAD.ActiveDocument.MeshRefinement001.NumberLayers = 1
 FreeCAD.ActiveDocument.MeshRefinement001.ExpansionRatio = 1.2
 FreeCAD.ActiveDocument.MeshRefinement001.FirstLayerHeight = '0 mm'
 FreeCAD.ActiveDocument.MeshRefinement001.RegionEdgeRefinement = 1.0
-FreeCAD.ActiveDocument.MeshRefinement001.Baffle = False
 FreeCAD.ActiveDocument.MeshRefinement001.Internal = True
 
 FreeCAD.ActiveDocument.MeshRefinement.RelativeLength = 0.05
@@ -28,15 +27,35 @@ FreeCAD.ActiveDocument.MeshRefinement.NumberLayers = 3
 FreeCAD.ActiveDocument.MeshRefinement.ExpansionRatio = 1.2
 FreeCAD.ActiveDocument.MeshRefinement.FirstLayerHeight = '0 mm'
 FreeCAD.ActiveDocument.MeshRefinement.RegionEdgeRefinement = 1
-FreeCAD.ActiveDocument.MeshRefinement.Baffle = False
 FreeCAD.ActiveDocument.MeshRefinement.Internal = False
 
-CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Slice_Mesh)
+# Front wheel 
+CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Compound_Mesh)
 referenceList = []
-referenceList.append(('Slice','Face55'))
-referenceList.append(('Slice','Face14'))
-referenceList.append(('Slice','Face6'))
-referenceList.append(('Slice','Face7'))
+referenceList.append(('Cut','Face19'))
+referenceList.append(('Cut','Face20'))
+referenceList.append(('Cut','Face21'))
+referenceList.append(('Cut','Face22'))
+referenceList.append(('Cut','Face23'))
+referenceList.append(('Cut','Face24'))
+referenceList.append(('Cut','Face25'))
+referenceList.append(('Cut','Face26'))
+referenceList.append(('Cut','Face27'))
+referenceList.append(('Cut','Face28'))
+referenceList.append(('Cut','Face29'))
+referenceList.append(('Cut','Face30'))
+referenceList.append(('Cut','Face31'))
+referenceList.append(('Cut','Face32'))
+referenceList.append(('Cut','Face45'))
+referenceList.append(('Cut','Face46'))
+referenceList.append(('Cut','Face47'))
+referenceList.append(('Cut','Face48'))
+referenceList.append(('Cut','Face49'))
+referenceList.append(('Cut','Face50'))
+referenceList.append(('Cut','Face51'))
+referenceList.append(('Cut','Face52'))
+referenceList.append(('Cut','Face53'))
+referenceList.append(('Cut','Face75'))
 FreeCAD.ActiveDocument.MeshRefinement002.References = referenceList
 
 FreeCAD.ActiveDocument.MeshRefinement002.RelativeLength = 0.02
@@ -45,7 +64,6 @@ FreeCAD.ActiveDocument.MeshRefinement002.NumberLayers = 1
 FreeCAD.ActiveDocument.MeshRefinement002.ExpansionRatio = 1.2
 FreeCAD.ActiveDocument.MeshRefinement002.FirstLayerHeight = '0 mm'
 FreeCAD.ActiveDocument.MeshRefinement002.RegionEdgeRefinement = 1.0
-FreeCAD.ActiveDocument.MeshRefinement002.Baffle = False
 FreeCAD.ActiveDocument.MeshRefinement002.Internal = False
 
 FreeCADGui.ActiveDocument.Sphere.Transparency = 50

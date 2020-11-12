@@ -49,7 +49,6 @@ FreeCAD.ActiveDocument.MeshRefinement.NumberLayers = 16
 FreeCAD.ActiveDocument.MeshRefinement.ExpansionRatio = 1.2
 FreeCAD.ActiveDocument.MeshRefinement.FirstLayerHeight = '0 mm'
 FreeCAD.ActiveDocument.MeshRefinement.RegionEdgeRefinement = 1.0
-FreeCAD.ActiveDocument.MeshRefinement.Baffle = False
 FreeCAD.ActiveDocument.MeshRefinement.Internal = False
 
 obj = FreeCAD.ActiveDocument.PhysicsModel
