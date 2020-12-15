@@ -8,10 +8,10 @@ App.ActiveDocument.recompute()
 Gui.activateWorkbench("CfdOFWorkbench")
 
 import CfdMeshRefinement
-CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Compound_Mesh)
-referenceList = []
+CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Compound001_Mesh)
+FreeCAD.ActiveDocument.MeshRefinement001.References = []
+referenceList = FreeCAD.ActiveDocument.MeshRefinement001.References
 referenceList.append(('Sphere','Solid1'))
-FreeCAD.ActiveDocument.MeshRefinement001.References = referenceList
 
 FreeCAD.ActiveDocument.MeshRefinement001.RelativeLength = 0.25
 FreeCAD.ActiveDocument.MeshRefinement001.RefinementThickness = '0 mm'
@@ -30,8 +30,9 @@ FreeCAD.ActiveDocument.MeshRefinement.RegionEdgeRefinement = 1
 FreeCAD.ActiveDocument.MeshRefinement.Internal = False
 
 # Front wheel 
-CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Compound_Mesh)
-referenceList = []
+CfdMeshRefinement.makeCfdMeshRefinement(App.ActiveDocument.Compound001_Mesh)
+FreeCAD.ActiveDocument.MeshRefinement002.References = []
+referenceList = FreeCAD.ActiveDocument.MeshRefinement002.References
 referenceList.append(('Cut','Face19'))
 referenceList.append(('Cut','Face20'))
 referenceList.append(('Cut','Face21'))
@@ -56,7 +57,6 @@ referenceList.append(('Cut','Face51'))
 referenceList.append(('Cut','Face52'))
 referenceList.append(('Cut','Face53'))
 referenceList.append(('Cut','Face75'))
-FreeCAD.ActiveDocument.MeshRefinement002.References = referenceList
 
 FreeCAD.ActiveDocument.MeshRefinement002.RelativeLength = 0.02
 FreeCAD.ActiveDocument.MeshRefinement002.RefinementThickness = '1 mm'
